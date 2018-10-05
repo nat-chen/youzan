@@ -4,7 +4,8 @@ import url from 'js/api.js';
 import axios from 'axios';
 import Vue from 'vue';
 
-import Foot from 'components/Foot.vue';
+// import Foot from 'components/Foot.vue';
+import mixin from 'js/mixin.js';
 
 new Vue({
   el: '#app',
@@ -13,9 +14,6 @@ new Vue({
     topIndex: 0,
     subData: null,
     rankData: null,
-  },
-  components: {
-    Foot,
   },
   created() {
     this.getTopList();
@@ -41,11 +39,10 @@ new Vue({
       axios.post(url.rank).then(res => {
         this.rankData = res.data.data;
       }).catch(err => console.log('loading'));
+    },
+    toSearch(list) {
+      location.href = `search.html?keyword=${list.name}&id=${list.id}`
     }
   },
-  filters: {
-    setTwoDecimalPlaces: function(value) {
-      return value.toFixed(2)
-    }
-  }
+  mixins: [mixin],
 })

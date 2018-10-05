@@ -14,7 +14,9 @@
     "axios": "^0.18.0",
     "mini-ui": "^0.0.1-alpha",
     "mint-ui": "^2.2.13",
+    "qs": "^6.5.2",
     "swiper": "^4.4.1",
+    "velocity-animate": "^2.0.5",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

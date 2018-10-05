@@ -7,8 +7,7 @@ import url from 'js/api.js'
 import { InfiniteScroll } from 'mint-ui';
 Vue.use(InfiniteScroll);
 
-import Foot from 'components/Foot.vue'
-import Swipe from 'components/Swipe.vue'
+import mixin from 'js/mixin.js'
 
 let app = new Vue({
   el: '#app',
@@ -51,8 +50,5 @@ let app = new Vue({
       })
     },
   },
-  components: {
-    Foot,
-    Swipe
-  }
+  mixins: [mixin],
 })
