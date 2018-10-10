@@ -12,6 +12,11 @@ export default {
         return priceStr + '.00';
       }
     },
+    numberValidation(numberStr) {
+      let removedHeadZeroes = String(numberStr).replace(/^0+/, '') 
+      let isNumber = /^\d+$/.test(removedHeadZeroes);
+      return isNumber ? Number(removedHeadZeroes) : number;
+    }
   },
   components: { // vue 组件页面
     Foot,
