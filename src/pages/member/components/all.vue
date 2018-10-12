@@ -7,8 +7,8 @@
         :key="list.id"
         :class="{'address-item-default': list.isDefault}"
       >
-        <div class="address-title">Nat Chen {{list.tel}}</div>
-        <p>深圳市南山区科技园</p>
+        <div class="address-title">{{list.name}} - {{list.tel}}</div>
+        <p>{{list.provinceName}}-{{list.cityName}}-{{list.districtName}}-{{list.address}}</p>
       </a>
     </div>
     <div class="block stick-bottom-row center">
@@ -20,18 +20,17 @@
 </template>
 
 <script>
-import Address from 'js/addressService.js';
 
 export default {
-  data() {
-    return {
-      lists: null,
+  computed: {
+    lists() {
+      return this.$store.state.lists;
     }
   },
   created() {
-    Address.list().then(res => {
-      this.lists = res.data.lists;
-    });
+    if (!this.lists) {
+      this.$store.dispatch('getLists');
+    }
   },
   methods: {
     toEdit(list) {
