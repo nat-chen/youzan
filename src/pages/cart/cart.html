@@ -142,10 +142,10 @@
                 合计：¥<span class="js-total-price" style="color: rgb(255, 102, 0);">{{total}}</span>
                 <p class="c-gray-dark">不含运费</p>
               </div>
-              <button href="javascript:;" class="js-go-pay btn btn-orange-dark font-size-14" 
+              <button class="js-go-pay btn btn-orange-dark font-size-14" 
               v-show="!editingShop"
               :disabled="!selectLists.length">
-                结算 {{selectLists.length}}
+                <a href="member.html" style="color: #fff">结算 {{selectLists.length}}</a>
               </button>
               <!-- 编辑状态 -->
               <button href="javascript:;" :disabled="!removeLists.length"       class="j-delete-goods btn font-size-14 btn-red"

@@ -24,6 +24,7 @@
 export default {
   computed: {
     lists() {
+      console.log(this.$store.state.lists)
       return this.$store.state.lists;
     }
   },

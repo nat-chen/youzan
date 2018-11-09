@@ -6,7 +6,7 @@ import Vue from 'vue';
 import mixin from 'js/mixin.js';
 import axios from 'axios';
 import url from 'js/api.js';
-import Velocity from 'velocity-animate';
+import Velocity from 'velocity-animate/velocity.js';
 import Cart from 'js/cartService.js';
 
 //以下 checked 仅表示选择按钮
@@ -66,7 +66,6 @@ new Vue({
             if (goods.checked) {
               arr.push(goods);
               total += goods.price * goods.number;
-              console.log(total);
             }
           })
           this.total = total; 
@@ -91,7 +90,7 @@ new Vue({
   },
   methods: {
     getList() {
-      axios.post(url.cartLists).then(res => {
+      axios.get(url.cartLists).then(res => {
         this.lists = res.data.cartList.map(shop => {
           shop.editing = false;
           shop.editingMsg = '编辑';

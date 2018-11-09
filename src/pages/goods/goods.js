@@ -42,14 +42,14 @@ new Vue({
     },
     showSku: function(newVal, oldVal) {
       document.body.style.overflow = newVal ? 'hidden' : 'auto';
-      document.documentElement.overflow = newVal ? 'hidden' : 'auto';
+      document.documentElement.style.overflow = newVal ? 'hidden' : 'auto';
       document.body.style.height = newVal ? '100%' : 'auto';
       document.documentElement.style.height = newVal ? '100%' : 'auto';
     }
   },
   methods: {
     getDetails() {
-      axios.post(url.details, { id })
+      axios.get(url.details, { id })
         .then(res => {
           this.details = res.data.data;
           this.details.imgs.map((img) => {
@@ -68,7 +68,7 @@ new Vue({
       axios.get(url.deal)
         .then(res => {
           this.dealLists = res.data.data.lists;
-        })
+        });
     },
     chooseSku(type) {
       this.skuType = type;
@@ -79,11 +79,11 @@ new Vue({
       this.skuNum += num;
     },
     addCart() {
-      axios.post(url.addCart, {
+      axios.get(url.addCart, {
         id,
         number: this.skuNum
       }).then(res => {
-        if (res.data.status === 200) {
+        // if (res.data.status === 200) {
           this.showSku = false;
           this.isAddCart = true;
           this.showAddMessage = true;
@@ -91,7 +91,7 @@ new Vue({
           setTimeout(() => {
             this.showAddMessage = false;
           }, 1500);
-        }
+        // }
       })
     }
   },

@@ -27,11 +27,12 @@ let app = new Vue({
     getLists() {
       if (this.allLoaded) return;
       this.loading = true;
-      axios.post(url.hotLists, {
+      axios.get(url.hotLists, {
         pageNum: this.pageNum,
         pageSize: this.pageSize,
       }).then(res => {
         let curLists = res.data.lists;
+        console.log(curLists);
         if (curLists.length < this.pageSize) {
           this.allLoaded = true;
         }

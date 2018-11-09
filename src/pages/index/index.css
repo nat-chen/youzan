@@ -382,17 +382,19 @@ only screen and (min-device-pixel-ratio:1.5) {
   background-size: 60% auto
 }
 
+.goods-item .detail {
+  display: flex;
+  justify-content: space-between;
+  height: 24px;;
+}
 .goods-item .detail .title {
-  padding-bottom: 8px;
   font-size: 12px;
-  line-height: 1;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden
 }
 
 .goods-item .detail .price {
-  padding-bottom: 8px;
   font-size: 14px;
   color: #ff525e
 }

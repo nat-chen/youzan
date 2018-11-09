@@ -15,6 +15,7 @@ export default {
       addressData: require('js/address.json'),
       cityList: null,
       districtList: null,
+      isEditingAddress: false,
     }
   },
   computed: {
@@ -54,7 +55,7 @@ export default {
       this.districtValue = -1;
 
       //处于编辑状态时 (不可在 created 赋值, 否则不断切换新值和 -1 的状态)
-      if (this.type === 'edit') {
+      if (this.type === 'edit' && !this.isEditingAddress) {
         this.cityValue = parseInt(this.instance.cityValue);
       }
     },
@@ -68,8 +69,9 @@ export default {
       this.districtValue = -1;
 
       //处于编辑状态时
-      if (this.type === 'edit') {
+      if (this.type === 'edit' && !this.isEditingAddress) {
         this.districtValue = parseInt(this.instance.districtValue);
+        this.isEditingAddress = true; //表明处于自由编辑状态
       }
     }
 
@@ -79,6 +81,7 @@ export default {
       //去空和合法性校验未做
       let { name, tel, provinceValue, cityValue, districtValue, address } = this;
       let data = { name, tel, provinceValue, cityValue, districtValue, address };
+      console.log(data);
       // if (this.type === 'add') {
         // Address.add(data).then(res => {
         //   this.$router.go(-1);
